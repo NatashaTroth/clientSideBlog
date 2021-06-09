@@ -1,0 +1,671 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Monstrous Mini Games - CSS &amp; UI Workshop</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="ff6fc986-682f-4ceb-b389-6dcdde149395" class="page sans"><header><h1 class="page-title">Monstrous Mini Games - CSS &amp; UI Workshop</h1><table class="properties"><tbody><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M6.98643729,14.0000972 C5.19579566,14.0000972 3.40419152,13.3106896 2.04245843,11.9323606 C-0.681017475,9.21200555 -0.680780251,4.76029539 2.04293482,2.04012507 C4.76664406,-0.68004331 9.22427509,-0.68004331 11.9480135,2.04013479 C13.272481,3.36277455 14,5.1330091 14,6.99552762 C14,8.87640182 13.2721894,10.6285043 11.9480135,11.9509302 C10.5679344,13.3105924 8.77756503,14.0000972 6.98643729,14.0000972 Z M10.2705296,7.00913883 L10.2705296,8.46099754 L10.2705296,8.65543362 L10.076181,8.65543362 L8.6543739,8.65543362 L5.72059514,8.65543362 L5.52619796,8.65543362 L5.52619796,8.46099754 L5.52619796,5.52541044 L5.52619796,3.37946773 L5.52619796,3.18502193 L5.72059514,3.18502193 L7.17253164,3.18502193 L7.36692883,3.18502193 L7.36692883,3.37946773 L7.36692883,6.81467358 L10.076181,6.81467358 L10.2705296,6.81467358 L10.2705296,7.00913883 Z M12.1601539,6.99552762 C12.1601539,5.61697497 11.6190112,4.32597154 10.6393933,3.34769528 C8.63253764,1.34336744 5.35197452,1.34061603 3.34153136,3.33944106 C3.33868273,3.34219247 3.33607716,3.34494388 3.33322852,3.34769528 C1.32397148,5.35459953 1.32372842,8.63641682 3.33322852,10.6433794 C5.34295224,12.6504489 8.62968901,12.6504489 10.6393933,10.6433794 C11.6190112,9.66506426 12.1601539,8.37408027 12.1601539,6.99552762 Z"></path></svg></span>Created</th><td><time>@Jun 1, 2021 11:07 AM</time></td></tr><tr class="property-row property-row-created_by"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedBy"><path d="M13.125,10.0354 C12.5536,9.48588 10.801,8.53125 9.625,7.875 L9.625,7.04112 C9.849,6.71912 10.045,6.37 10.1911,5.98588 C10.5849,5.7435 10.9375,5.28412 10.9375,4.8125 C10.9375,4.35488 10.9323,3.94275 10.4668,3.605 C10.3049,1.5575 9.436,0 7,0 C4.564,0 3.69513,1.5575 3.53325,3.605 C3.06775,3.94275 3.0625,4.35488 3.0625,4.8125 C3.0625,5.28412 3.41513,5.7435 3.80888,5.98588 C3.955,6.37 4.151,6.71912 4.375,7.04112 L4.375,7.875 C3.199,8.53125 1.44638,9.48588 0.875,10.0354 C0.1645,10.7188 0,11.8125 0,14 L14,14 C14,11.8125 13.8364,10.7188 13.125,10.0354 Z"></path></svg></span>Created By</th><td><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GjKQweIsrwXNolXST7B8qx90Crc4Or7YiaAYr4cgQ=s100" class="icon user-icon"/>Magdalena Maislinger</span></td></tr><tr class="property-row property-row-last_edited_by"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedBy"><path d="M13.125,10.0354 C12.5536,9.48588 10.801,8.53125 9.625,7.875 L9.625,7.04112 C9.849,6.71912 10.045,6.37 10.1911,5.98588 C10.5849,5.7435 10.9375,5.28412 10.9375,4.8125 C10.9375,4.35488 10.9323,3.94275 10.4668,3.605 C10.3049,1.5575 9.436,0 7,0 C4.564,0 3.69513,1.5575 3.53325,3.605 C3.06775,3.94275 3.0625,4.35488 3.0625,4.8125 C3.0625,5.28412 3.41513,5.7435 3.80888,5.98588 C3.955,6.37 4.151,6.71912 4.375,7.04112 L4.375,7.875 C3.199,8.53125 1.44638,9.48588 0.875,10.0354 C0.1645,10.7188 0,11.8125 0,14 L14,14 C14,11.8125 13.8364,10.7188 13.125,10.0354 Z"></path></svg></span>Last Edited By</th><td><span class="user"><img src="https://lh5.googleusercontent.com/-zMRbXXWE24Y/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnsh3BjIKYsg5u_JAUPtfh0dkv0Xg/photo.jpg" class="icon user-icon"/>Natasha Troth</span></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M6.98643729,14.0000972 C5.19579566,14.0000972 3.40419152,13.3106896 2.04245843,11.9323606 C-0.681017475,9.21200555 -0.680780251,4.76029539 2.04293482,2.04012507 C4.76664406,-0.68004331 9.22427509,-0.68004331 11.9480135,2.04013479 C13.272481,3.36277455 14,5.1330091 14,6.99552762 C14,8.87640182 13.2721894,10.6285043 11.9480135,11.9509302 C10.5679344,13.3105924 8.77756503,14.0000972 6.98643729,14.0000972 Z M10.2705296,7.00913883 L10.2705296,8.46099754 L10.2705296,8.65543362 L10.076181,8.65543362 L8.6543739,8.65543362 L5.72059514,8.65543362 L5.52619796,8.65543362 L5.52619796,8.46099754 L5.52619796,5.52541044 L5.52619796,3.37946773 L5.52619796,3.18502193 L5.72059514,3.18502193 L7.17253164,3.18502193 L7.36692883,3.18502193 L7.36692883,3.37946773 L7.36692883,6.81467358 L10.076181,6.81467358 L10.2705296,6.81467358 L10.2705296,7.00913883 Z M12.1601539,6.99552762 C12.1601539,5.61697497 11.6190112,4.32597154 10.6393933,3.34769528 C8.63253764,1.34336744 5.35197452,1.34061603 3.34153136,3.33944106 C3.33868273,3.34219247 3.33607716,3.34494388 3.33322852,3.34769528 C1.32397148,5.35459953 1.32372842,8.63641682 3.33322852,10.6433794 C5.34295224,12.6504489 8.62968901,12.6504489 10.6393933,10.6433794 C11.6190112,9.66506426 12.1601539,8.37408027 12.1601539,6.99552762 Z"></path></svg></span>Last Edited Time</th><td><time>@Jun 9, 2021 10:13 AM</time></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Property</th><td></td></tr><tr class="property-row property-row-person"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesPerson"><path d="M9.625,10.8465 C8.91187,10.2891 8.12088,9.926 7,9.26013 L7,8.71938 C7.21175,8.47612 7.392,8.176 7.53813,7.83213 C7.94587,7.7315 8.3125,7.33425 8.3125,7 C8.3125,6.51788 8.1095,6.32713 7.8715,6.17137 C7.8715,6.15562 7.875,6.14162 7.875,6.125 C7.875,5.41362 7.4375,3.5 5.25,3.5 C3.0625,3.5 2.625,5.4145 2.625,6.125 C2.625,6.14162 2.6285,6.15562 2.6285,6.17137 C2.3905,6.32713 2.1875,6.51788 2.1875,7 C2.1875,7.33425 2.55413,7.7315 2.96187,7.833 C3.108,8.176 3.28825,8.47612 3.5,8.71938 L3.5,9.26013 C2.37912,9.92513 1.58812,10.2882 0.875,10.8465 C0.041125,11.4984 0,12.4688 0,14 L10.5,14 C10.5,12.4688 10.4589,11.4984 9.625,10.8465 Z M13.125,7.3465 C12.4119,6.78912 11.6209,6.426 10.5,5.76013 L10.5,5.21938 C10.7118,4.97613 10.892,4.676 11.0381,4.33213 C11.4459,4.2315 11.8125,3.83425 11.8125,3.5 C11.8125,3.01787 11.6095,2.82713 11.3715,2.67138 C11.3715,2.65562 11.375,2.64162 11.375,2.625 C11.375,1.91363 10.9375,0 8.75,0 C6.5625,0 6.125,1.9145 6.125,2.625 C6.125,2.64162 6.1285,2.65562 6.1285,2.67138 C6.11188,2.68275 6.09787,2.69588 6.08125,2.70725 C7.83212,3.066 8.59688,4.54825 8.72813,5.74787 C8.97575,6.00863 9.1875,6.39625 9.1875,7 C9.1875,7.60288 8.771,8.20312 8.18388,8.51462 C8.127,8.624 8.06662,8.729 8.00275,8.82962 C8.155,8.91537 8.30025,8.99675 8.44025,9.07463 C9.08075,9.4325 9.63375,9.74137 10.164,10.1561 C10.3022,10.2638 10.4204,10.3801 10.5289,10.4991 L14,10.4991 C14,8.96875 13.9589,7.99837 13.125,7.3465 Z"></path></svg></span>Stakeholders</th><td><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GgjepSKOuUFpnDiDJVOAWJAUbHNBmQ5UMbJBPZaYyI=s100" class="icon user-icon"/>Robin Fellinger</span><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">K</span></span>Kristina Schneider</span><span class="user"><img src="https://lh6.googleusercontent.com/-sjar2mK0XMI/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucmHXVTYUCeKFSIJohBvwIbQ1rIgaA/photo.jpg" class="icon user-icon"/>Leon Spiegelmayr</span><span class="user"><img src="https://lh5.googleusercontent.com/-zMRbXXWE24Y/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnsh3BjIKYsg5u_JAUPtfh0dkv0Xg/photo.jpg" class="icon user-icon"/>Natasha Troth</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Status</th><td></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Type</th><td><span class="selected-value select-value-color-yellow">Project Kickoff 🚀</span></td></tr></tbody></table></header><div class="page-body"><nav id="8d0dbc18-7f07-4553-9505-f62f1f4de234" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#048f70a1-8739-422f-83c7-f12be9cc249b">Monstrous Mini-Games - Our Project</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#683cbc07-3b8e-469f-87ec-f3595dcabf40">Typical usage situations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7069ea60-ad40-44a3-8f69-7ac528c7c307">Users’ Skills and Abilities</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7118f0b7-77c2-47d4-b68a-4e4c74327f80">Analysis of Strengths and Weaknesses of our UI</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#781df2f2-64dc-4dd8-89c2-417f457d4304">Strengths</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b49b8f5e-be1c-4e5d-8a29-9ca26c745bba">Weaknesses</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8e3ff771-fb86-4c0a-9251-a3af922909f4">Identified Issues</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#26584aa8-18fd-4bb4-8121-68971449453f">Issue Prioritisation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#634908a8-8eb8-4b36-92fd-684da59712ef">Workshop Improvements</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b1506756-3e4f-49f0-bcd0-2eae65e43bfe">Issue #200:<mark class="highlight-gray"><em> let players start the game from the screen</em></mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#158cc4b7-125c-4c3f-946c-225712555590">Before</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e73fe5c7-3502-4075-b64a-e5bb566bcbcc">After</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6d461d67-84aa-4349-a2fb-388eaf246ed9">Issue #201: <mark class="highlight-gray"><em>Add Audio Controls to UI</em></mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#47394042-26b5-4f5e-a6f3-5ba4fc384b3a">Before</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8b9e2eb1-61de-4074-bbb3-480c92cc6cd3">After</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c4f7faf9-afd2-49cb-9b9b-51011723facc">Issue #202: <mark class="highlight-gray"><em>improve controls of obstacles and give more useful feedback to the user</em></mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cffbca46-c03d-4e38-8d43-a84d9884fd43">Before</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b7af7b08-18c6-4dc3-b179-5939a0f145b4">After</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e93e6980-21f1-42be-b59f-a11429ed11f5">Issue #205: <mark class="highlight-gray"><em>change background and player movement</em></mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c707a63c-0d9d-4fb0-8b97-80fcae5b6541">Before</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#45cd8373-9290-4c78-8a00-9c601f841204">After</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4040a7d6-909f-4bbd-8d54-02406bd27c6c">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4b881f8b-a747-44a5-ad1b-f5fa68e9e7fa">References</a></div></nav><h1 id="048f70a1-8739-422f-83c7-f12be9cc249b" class="">Monstrous Mini-Games - Our Project</h1><p id="5ba7f580-2007-4305-883a-7b418b115a22" class="">Our project is a collection of web-based multiplayer party games which are played in the browser. Players can use their smartphones to control the games and an extra screen is used as the game board. Two game modes will be available, in which the players either play together in front of one screen (using the same wifi) or on separate screens online.
+Multiple smartphone sensors will be used to control the game, like for example microphone, gyroscope, accelerometer, pedometer, etc.
+The collection of mini-games is connected by a small story of monsters sitting around the campfire. Currently, we are still working on the implementation of the first game, where the monsters try to escape from mosquitoes in the forest. To get the own monster to safety, the player has to shake their phone, causing the monster to run forward. However, on the way to the safety of a cave, the monster encounters various obstacles. So far we have a tree trunk, which must be removed by touch input. The second obstacle is a spider, which is scared away by blowing into the microphone.</p><h2 id="683cbc07-3b8e-469f-87ec-f3595dcabf40" class="">Typical usage situations</h2><ul id="971c9174-32db-4f1f-8ff7-f6aea40f6c03" class="toggle"><li><details open=""><summary><strong>Environment </strong></summary><p id="46a5b29e-51c7-4b14-b2c3-bc7bff1d72cb" class="">The user should be indoors (easier to see the screen), but they can also be outside if the lighting is good. There must be access to an internet connection.</p></details></li></ul><ul id="e49b22eb-b528-446f-82a4-3fc9077e3137" class="toggle"><li><details open=""><summary><strong>Sound</strong></summary><p id="643bc43c-890a-4291-a7b9-e31c43ccbf51" class="">The lobby and games have music, the sound will be able to be adjusted or turned off completely.</p></details></li></ul><ul id="605f9152-c2f1-4223-9a51-b2baea5f3288" class="toggle"><li><details open=""><summary><strong>Devices</strong></summary><p id="a063dba4-6c98-44d9-8f72-7d4a709f44f4" class="">The user needs a smartphone as a controller plus a laptop or computer as the game screen. The game screen can be shared among multiple or even all users.</p></details></li></ul><ul id="0b3b07e5-4d09-44c5-b4ec-73feee19bcab" class="toggle"><li><details open=""><summary><strong>Motion</strong></summary><p id="4d461a89-b2aa-4141-aee9-88896f7219a3" class="">Each game requires different usage of the controller. For example, in the run away from mosquitoes game the user has to shake their phone, blow into the microphone and swipe on the screen as part of the gameplay.</p></details></li></ul><ul id="93551306-2127-4abb-9080-dda40b4af21b" class="toggle"><li><details open=""><summary><strong>Social</strong></summary><p id="5ff0c2f7-25cd-4c91-a754-82f56f09dc2c" class="">The different users can all be in the same place and use a single laptop as a screen. Alternatively, they can be in different locations, with each user needing a screen for themselves.</p></details></li></ul><ul id="0cf47b2f-7277-4fbd-b4ab-62c140463001" class="toggle"><li><details open=""><summary><strong>Mood</strong></summary><p id="85ad936b-f831-4478-bbb4-c7f9a81e64c0" class="">Playful, fun, slightly competitive</p></details></li></ul><h2 id="7069ea60-ad40-44a3-8f69-7ac528c7c307" class="">Users’ Skills and Abilities</h2><p id="d2eca09b-74d9-4023-97d0-b15923acf6a6" class="">The user needs to be able to navigate a smartphone and maybe also a computer (if there is more than one player, someone else could set up the computer screen).</p><p id="7467c875-512d-4f3f-b89e-cfdd39dc5895" class="">The user needs a free hand and must be able to shake the smartphone with it. Furthermore, the user has to be able to blow into their microphone and swipe on their screen. It is not yet decided what other sensors will be used on the phone, but they will head in a similar direction. It has not yet been decided whether the games will be made accessible, since the core aspect of our game, is that the user can utilise the different sensors of the smartphone. The next mini-game might be designed in a way so that the user input is accessible (e.g. no motion detection)</p><p id="97a40756-b1f2-43a5-a89c-cb4ac2ca5e30" class="">The user must be able to see and understand the English language. Also, coordination between hands and eyes should be possible.</p><h1 id="7118f0b7-77c2-47d4-b68a-4e4c74327f80" class="">Analysis of Strengths and Weaknesses of our UI</h1><p id="f261c055-8361-44be-98a2-b3390c07732f" class="">We identified our strengths and weaknesses, as well as the resulting issues, by answering the eight questions in this workshop, as well as through user-testing during the last studio week and a meeting with two game designers. The strengths, weaknesses, and issues were analysed according to the criteria of a good UI, defined by Kristina Schneider and discussed in this workshop. <a href="https://www.notion.so/Schneider-Kristina-2021-370d65a8bd2643d5b3c97db328fac8bb">(Schneider, Kristina. 2021)</a> </p><h2 id="781df2f2-64dc-4dd8-89c2-417f457d4304" class="">Strengths</h2><ul id="b42c9e09-d8f7-46bc-8b85-cefae96a3857" class="toggle"><li><details open=""><summary><strong>Explanation of the game before it starts - </strong><em><strong>Guidance and Hierarchy</strong></em></summary><p id="925d9ca5-d56a-4aa3-b09f-4d477692e587" class="">As one of our strengths, we consider the explanation of the game at the beginning. Here, it is explained that the player has to connect the mobile phone. There is also a tutorial shortly before the game starts, which points out the process and the controls. This strength can be classified in the category guidance and hierarchy.</p></details></li></ul><ul id="3e3b95b2-bcb5-4b71-8b0b-cdb24ae04027" class="toggle"><li><details open=""><summary><strong>Big buttons, easy navigation - </strong><em><strong>Accessibility</strong></em></summary><p id="6b6751ed-bdf3-4f41-a722-51d8478e86d1" class="">We see the simple layout with large buttons of our UI, which enables easy navigation, as an accessibility criteria and further strength.</p></details></li></ul><ul id="e3173a6e-7ed4-49f6-86b5-347f1c827cba" class="toggle"><li><details open=""><summary><strong>Easy connection with the QR code - </strong><em><strong>Accessibility as well as Guidance and Hierarchy</strong></em></summary><p id="66c6593d-75eb-4b0e-ab31-f9cbd6af5077" class="">The strength of being able to easily connect the smartphone to the game by scanning a QR code can be classified into two criteria accessibility and guidance and hierarchy.</p></details></li></ul><ul id="3271f263-55e5-4498-bb20-a8878d8f6996" class="toggle"><li><details open=""><summary><strong>Sound to enhance the gaming experience - </strong><em><strong>Beauty and Delight</strong></em></summary><p id="989a8dce-eda1-4839-a029-a9ef3a541eef" class="">As a final strength and beauty and delight feature, we were able to identify the integrated sound to enhance the gaming experience.</p></details></li></ul><h2 id="b49b8f5e-be1c-4e5d-8a29-9ca26c745bba" class="">Weaknesses</h2><ul id="c6f0bc75-6278-4a8c-90d9-025f0fcc461d" class="toggle"><li><details open=""><summary><strong>Little user feedback - </strong> <em><strong>Responsive &amp; Forgiving</strong></em></summary><p id="b0c06fe7-34da-46b3-b23f-001985f3a80e" class="">For this responsive &amp; forgiving criteria, we have identified that the user should receive more feedback, especially when solving the obstacle, for example. So far, there is only feedback through a progress bar and few animations.</p></details></li></ul><ul id="98639d27-51f3-43fd-8efc-2600cb75aa12" class="toggle"><li><details open=""><summary><strong>Users don&#x27;t know where to look (controller or screen) - G</strong><em><strong>uidance and Hierarchy</strong></em></summary><p id="5b9ecbd4-ebf5-488b-ba2d-c56ef36a9056" class="">Especially when the user comes to an obstacle and the game shifts from the screen to the controller, confusion often arises. To fulfil this guidance and hierarchy requirement, the vibration could be used to draw attention to the phone, for example.</p></details></li></ul><ul id="928f61b9-0ce6-492d-afbe-6b4615527dba" class="toggle"><li><details open=""><summary><strong>Users cannot control the audio - </strong><em><strong>Accessibility</strong></em></summary><p id="27d6d10f-460f-48a0-baf2-fc3f4b872e23" class="">Music is played automatically in the lobby, but there is no way to adjust the volume or turn the music off at all.</p></details></li></ul><ul id="78fe6925-f41b-44ba-83dc-03a707bf29fa" class="toggle"><li><details open=""><summary><strong>Users cannot tell which lane their character was in - </strong><em><strong>Guidance and Hierarchy</strong></em></summary><p id="0b26ccab-1a18-4486-a717-8da750863c68" class="">The players&#x27; lanes are right next to (below/above) each other and can only be distinguished by the slight sideways representation. However, this distinction is difficult to see, which often confuses players.</p></details></li></ul><ul id="31b17211-22b4-4142-9c63-b62763f95f08" class="toggle"><li><details open=""><summary><strong>The names move faster than the characters - </strong><em><strong>Beauty and Delight</strong></em></summary><p id="96e5db06-ae57-48f7-afe6-08c3ea9d46dd" class="">The name of the player is displayed above the character. As soon as the character moves, the name should also move at the same pace, but the name is always moving slightly faster of the character.</p></details></li></ul><ul id="d0d4caa3-427c-4bae-870f-8c29b23a718f" class="toggle"><li><details open=""><summary><strong>Obstacle inputs do not work on some devices - </strong><em><strong>Accessibility</strong></em></summary><p id="7d0dd824-f3a4-4cfa-955d-57c42696e075" class="">On some devices, the touch input of the obstacles is recognised incorrectly or not at all. Since there is no way to skip the obstacle, the user is trapped in this situation and can no longer participate in the current game.</p></details></li></ul><h2 id="8e3ff771-fb86-4c0a-9251-a3af922909f4" class="">Identified Issues</h2><p id="ecbf6dfd-e49f-4cb8-8f0d-f9ea920c424b" class="">Through the feedback we received, we completely changed our game design again and re-identified what the goal of our game should be. Besides improving replayability (randomise elements, player interactivity, more variety, fun input methods), we also had to implement the new UI design. So there were many issues to choose from which would have helped to improve our UI. But we focused on four low effort/high impact UI topics for the workshop day.</p><ul id="c85eb1cc-af18-4850-9ecb-358ef740bbaf" class="bulleted-list"><li><a href="">#200: Let players start the game from the screen</a></li></ul><ul id="f7176d6f-f399-4adf-817b-8e40616df544" class="bulleted-list"><li><a href="">#201: Add Audio Controls to UI</a></li></ul><ul id="12568b09-298c-43a0-bef1-aa5429e996e8" class="bulleted-list"><li><a href="">#202: Improve controls of obstacles and give more useful feedback to the user</a></li></ul><ul id="ad3b7a81-7422-4db9-a012-52f9ed64c550" class="bulleted-list"><li><a href="">#205: Change background and player movement</a></li></ul><h3 id="26584aa8-18fd-4bb4-8121-68971449453f" class="">Issue Prioritisation</h3><p id="3934ed58-ff17-4611-a469-0b06cafbd08a" class="">The issues were prioritised using the Effort vs Impact Matrix <a href="https://www.notion.so/Juh-sz-Andr-s-2020-4618baf926364a8c9588cde949a7c4ee">(Juhász, András. 2020)</a>. The reason we chose this prioritisation method, was because it is simple but significant. The impact variable describes how high the issue will impact the application. The effort describes how much time is expected to be needed to implement the issue. 
+Due to our previously mentioned redesign and new UI, we had plenty of issues to choose from. Since the workshop was only held for one day, we focused on issues that were quick to implement (low effort) but rewarding (high impact). We also chose issues that were important for our minimal viable product. Since the backend was mostly finished and the frontend required more attention, the two backend programmers had started to help out in the frontend (this required a bit more time for them to get acquainted with the frontend). It was therefore possible for each of the programmers to address an issue. Issue #200 had a slightly higher effort since it would require a slight modification of the backend to implement. </p><figure id="42d5e806-8a30-42d0-bc2a-e67b5de8f3ee" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-06-01_at_19.53.18.png"><img style="width:942px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-06-01_at_19.53.18.png"/></a><figcaption>Our workshop issues prioritised and organised in an Effort vs Impact Matrix.</figcaption></figure><h1 id="634908a8-8eb8-4b36-92fd-684da59712ef" class="">Workshop Improvements</h1><h2 id="b1506756-3e4f-49f0-bcd0-2eae65e43bfe" class="">Issue #200:<mark class="highlight-gray"><em> let players start the game from the screen</em></mark></h2><p id="fa76486b-c781-4674-beda-91662501a9f7" class=""><strong>Criteria for good UI: Guidance &amp; Hierarchy</strong> <a href="https://www.notion.so/Schneider-Kristina-2021-370d65a8bd2643d5b3c97db328fac8bb">(Schneider, Kristina. 2021)</a> </p><p id="7abe4754-72c1-4627-a873-9db8834f668d" class="">The area of concern for this issue is guidance and hierarchy. The goal of the issue is to improve the users&#x27; experience of starting the game as the initial system was shown to be confusing to some users in the user testing during our last project week. </p><p id="5d5f7e25-0e27-47cb-8261-1872093beb61" class=""><em><strong>Usability Heuristics: Match between system and the real world</strong></em><em> </em><a href="https://www.notion.so/Nielsen-Jakob-2021-dd6a2d7800ce4333b8674d1aa0100aa3">(Nielsen, Jakob. 2021)</a> </p><p id="21f6086f-80f4-43a5-97fb-ed969a98d875" class="">Fulfilling this issue will improve the match between our web app and the real-world behaviour of new users. People playing the game for the first time don’t expect to be assigned the role of the game admin on their phones. Furthermore, their attention is mostly directed towards the laptop screens as they think of the phone merely as an input device during the game. Solving this issue will remove this clash of the behaviour of the web app and the behaviour expected by the users.</p><h3 id="158cc4b7-125c-4c3f-946c-225712555590" class="">Before</h3><ul id="d3f54290-3157-462b-aba5-38510352e8b1" class="bulleted-list"><li>The players could create a new room on their computer screens and share it with their friends.</li></ul><ul id="eb00f96a-ff20-4a48-a408-67dc87240195" class="bulleted-list"><li>The first player joining on their phone was given special &quot;admin&quot; rights, which allowed them to start the game.</li></ul><ul id="c0482a77-dfe1-444e-b8b7-fa21fb25e950" class="bulleted-list"><li>People assumed that the person creating the room is the admin even though most of the time someone else joined first on their phone.</li></ul><ul id="c98fad09-ae50-4427-828f-213d1d8fbdb3" class="bulleted-list"><li>The admin would not notice the button to start the game because they would be focused on the screen.</li></ul><ul id="d0cb26ac-8e5d-4c2a-9c1d-fb1c15c91b64" class="bulleted-list"><li>There was further confusion because the other players did not know how to start the game.<figure id="b0cae664-25c2-451f-a0c2-713339acb2fd" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/image.png"><img style="width:2000px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/image.png"/></a><figcaption>Initial design before the workshop</figcaption></figure></li></ul><h3 id="e73fe5c7-3502-4075-b64a-e5bb566bcbcc" class="">After</h3><ul id="3a9af003-b831-476c-8ce9-44f53989bf68" class="bulleted-list"><li><strong>The admin system was switched to the screens</strong><p id="88ba60df-0ed6-4643-bbdc-1264c2b4ce20" class="">In order to be able to start the game from the computer screens, the whole admin system in the backend had to be changed. The room system now saves the connected screens and assigns the first connected screen the admin role. Therefore, the person creating a new room gets to be the admin. If the admin screen is disconnected by the user losing connection or closing the app, the admin role gets reassigned to the screen that was first to connect after the admin.</p><p id="710cefe4-c73c-454b-b1fa-499c361f0c8f" class="">The server now emits a new message to the admin screen, informing it that it has admin rights. This information is then stored in the game context on the client side. The event listeners had to be changed so that they expect and process the admin actions as coming from the screen instead of the phones.</p></li></ul><ul id="bb5abf06-22ea-4e61-a60e-9c68acb3417c" class="bulleted-list"><li><strong>Conditional rendering</strong><p id="f1725e12-dc18-4c0a-a004-e35553593d2e" class="">The client can check its admin status by accessing it from its game context. If the screen has admin status, the user is shown additional options in the app. For now, these options include being able to choose a game that they want to play, starting that game and going back to the lobby after the game ended. Future features might include the option to remove unwanted players from the room.</p><figure id="8410af08-25a9-452a-8264-8c98a494975a" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/image_(3).png"><img style="width:2200px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/image_(3).png"/></a><figcaption> New design after the workshop. Only the admin can choose and start a game.</figcaption></figure><p id="9396d089-a72b-4a9f-8274-82f21f6daf9d" class="">Meanwhile, the other players do not see the option to choose a game and if they look on their phones, they are told that the admin is choosing a game and that they should look on their screens for changes.</p><figure id="d38beb02-72d3-433c-a054-c2cc3e9a724a" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/image_(2).png"><img style="width:2000px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/image_(2).png"/></a><figcaption>The other players do not see the option to start the game.</figcaption></figure></li></ul><ul id="6f5ddf77-76a6-41b7-8c75-c2909b648233" class="bulleted-list"><li><strong>Match between system and the real world</strong></li></ul><p id="dda9c893-7e83-45a0-94dc-3bf52da3b09d" class="">By completing this issue we adapted the admin system to the real-world behaviour of people using the web app during our user testing. By using conditional rendering, users are not confused by options that they cannot influence because they are not the admin of the room.  The notice on the phones leads the user&#x27;s attention towards their screens. The bright yellow button that stands out on the admin&#x27;s screen grabs their attention and signals that it is the path towards starting the game.</p><h2 id="6d461d67-84aa-4349-a2fb-388eaf246ed9" class="">Issue #201: <mark class="highlight-gray"><em>Add Audio Controls to UI</em></mark></h2><p id="24b1706c-617d-4030-8681-b89e88b0c576" class=""><strong>Criteria for good UI: Accessibility, Beauty &amp; Delight </strong><a href="https://www.notion.so/Schneider-Kristina-2021-370d65a8bd2643d5b3c97db328fac8bb">(Schneider, Kristina. 2021)</a> </p><p id="5b52a24e-5bee-4aa2-a93d-df3f1db629ba" class="">This issue can be categorised as accessible since it enables the user to control the audio played on the website. That way, users who are unable to play the sound (e.g. are in a place where sound is not permitted, or use a screen reader) are able to control it. Furthermore, this issue falls under beauty and delight, since the background music helps to make the waiting more enjoyable and enhance the game experience.</p><p id="c45a9281-c068-4c68-977c-eadf8816328d" class=""><em><strong>Usability Heuristics: User Control and Freedom, Visibility of System Status </strong></em><a href="https://www.notion.so/Nielsen-Jakob-2021-dd6a2d7800ce4333b8674d1aa0100aa3">(Nielsen, Jakob. 2021)</a> </p><p id="42875afb-4d19-4d9d-a086-50a31a88f0ff" class="">This issue allows users to control the audio (volume, mute &amp; unmute). This in turn gives the users more freedom. Users may not want to use the app if it is difficult for them to stop/start the audio or if they cannot control the volume. Furthermore, this issue allows for enhanced visibility of the system status, since they are able to see how high the volume of the audio is.</p><h3 id="47394042-26b5-4f5e-a6f3-5ba4fc384b3a" class="">Before</h3><ul id="d758fc51-eac9-4626-b2fe-459b7783cf62" class="bulleted-list"><li>There was no way to control the audio. It played on the lobby page, as long as the user clicked the &quot;Join Room&quot; or &quot;Create Room&quot; button beforehand. These buttons were used to set the browser audio context permission.</li></ul><ul id="ed6bfc6e-529c-4843-89e2-a6a0ebb27174" class="bulleted-list"><li>The music was played automatically with a volume of 0.2.</li></ul><ul id="e0e18bcf-f758-410f-95ed-8c866a8be4fe" class="bulleted-list"><li>When you reloaded the page, there was no way to start the music again. You would have to go back to the landing page and click on one of the two buttons that give the audio context permission.</li></ul><ul id="01318b15-1112-4c48-899f-08f543fe3440" class="bulleted-list"><li>The only way to stop the music once it starts playing is to close the tab in the browser settings. This is sometimes difficult to explain to users and is very inconvenient for them. There were also complaints that the automatic volume of the audio was either too loud or too quiet.</li></ul><ul id="323e11dd-0aff-40c2-83f1-c44b4ab0a990" class="bulleted-list"><li>The lobby music is handled in a React Context Component, namely the AudioContextProvider. The permissions and start/pause of the music are then rendered in the individual components where the music should play.</li></ul><h3 id="8b9e2eb1-61de-4074-bbb3-480c92cc6cd3" class="">After</h3><ul id="71f2583a-0d25-4bb6-9b8e-02b9c8c1d5f5" class="bulleted-list"><li><em><strong>Music added to the landing page</strong></em>
+The campfire animation is displayed on the landing page, therefore we wanted the lobby music to play here to accompany the animation. You can hear the sounds of the campfire in the background, which should not be missing from the atmosphere. Because of the browser audio context permission, music cannot be started automatically in browsers. The user must first interact with the page (e.g. by clicking on a button). Therefore, a button with a speaker/volume icon has been placed in the upper right corner. When clicking on it, the audio context permission is fetched and the music is started. This functionality was then also added to the tutorial and settings pages so that the lobby music plays here as well.</li></ul><ul id="ffdd92d5-0dc5-45af-b5e5-110bbbf9da38" class="bulleted-list"><li><em><strong>Mute/unmute button </strong></em>
+Although we intended to be able to adjust the audio in the settings, this is not immediately accessible from each page. If the user has the need to immediately/quickly mute the music, this would not be possible. Therefore, I have added a mute function to the audio button on the landing page. When first visiting the website, the music is muted since the user has not yet given the audio context permission. But if they click on this button, the music is started in the background. This button can then be toggled to pause/mute the music and play/unmute it again. This button was subsequently added to all the other pages where music can be played.
+
+For this purpose, a React FunctionComponent was created. This handles which audio icon (whether a speaker or a crossed-out speaker, so muted) is rendered depending on whether permission was given, whether the audio is currently playing and whether the volume is above 0. Conditional rendering was used to accomplish this. Tests were also written for this button accordingly.
+<figure id="c46d0141-bb61-40f1-b498-e47a072a3d8a" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-06-01_at_20.49.50.png"><img style="width:1770px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-06-01_at_20.49.50.png"/></a><figcaption>Here you can see the newly implemented mute/unmute button.</figcaption></figure><figure id="5d92de31-14cc-4c2b-b7bd-ee0dbcfe1c6a" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-06-01_at_20.47.46.png"><img style="width:1688px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-06-01_at_20.47.46.png"/></a><figcaption>Conditional rendering of the mute/unmute button allows the correct icon to be rendered, depending on the current state of the playing, permission and volume variable.</figcaption></figure><p id="5b88d854-da36-4a8c-906b-5e3b6ef467cd" class="">To create this state, the React AudioContextProvider had to be adapted. The problem was that the created HTML5 audio instance was always recreated as soon as any function in the audio context provider was called. This resulted in the inability to access an audio object that had already been created. So the music could not be paused and when you pressed play again (after pause), a new instance was created and the music played twice staggered. Therefore, this was stored in a state and initialised at the beginning with new Audio(lobbyMusic).</p></li></ul><ul id="a377bbad-e6b3-4a29-adad-04a00ffee8ab" class="bulleted-list"><li><em><strong>Play music automatically after reloading (when permission has already been given)
+</strong></em>When reloading the page, the music always stopped before. To work around this, I tried giving the browser audio context permission in the UseEffect, so that it would be called automatically when the component was loaded. This worked but caused problems when the link was called in the incognito tab, for example, when no permission was given. The problem here was that you had to click on the mute button twice for the music to starts. This way, the crossed-out speaker icon was shown when the music was playing. When you try to play the audio (audio.play()), it returns a promise. So you can catch the thrown error when permission cannot be given when the user hasn&#x27;t interacted with the page yet. Once caught, the permission variable is set to false again and playing is never set to true. So now the correct icon is shown on the button again. In addition, the handlePermission function has been relocated, since it is now also used by several components, as well as in several places in the lobby component.<figure id="c8cec093-f789-48e0-b2b0-f0d670d644ac" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-06-01_at_21.02.41.png"><img style="width:1488px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-06-01_at_21.02.41.png"/></a><figcaption>Code to set permission when the component is initially loaded, providing the permission is granted. If not, an error is thrown, which is caught and the permission is set to false.</figcaption></figure></li></ul><ul id="7f1503c2-94cd-4bef-a07e-64a525719ace" class="bulleted-list"><li><em><strong>Volume slider in settings</strong></em>
+The next UI element to implement was the volume settings in the settings component. For this, I used a prefabricated slider from Material-UI. Here values between 0 and 1 can be selected in steps of 0.05. In the onChange event, the new value is applied to audio.volume in the AudioContextProvider. Now the problem was, that if you leave the settings and come back, the slider is not at the same position as the current volume. Therefore, I had to create the state volume in the AudioContextProvider, so that this is always updated and can be passed back to the settings component. So, you can set the initial value of this slider to the current volume. The value of this volume is always set when audio.volume is changed. But the problem is, when dragging the slider, the music lags. This only happens if you also update the extra volume state variable. If you leave this out, the music doesn&#x27;t lag on the slider anymore. So, from the Settings component, I tried to update this variable only when the Settings component is exited. The UseBeforeUnload hook was unfortunately not called, and the return value in the UseEffect only received the initial value from the slider. If you pass this value as a dependency into the UseEffect, the content of the UseEffect return is always called when this value changes and so the music was laggy again (because the variable was updated the same as before). Therefore, I have left it with the lag for the time being until I can find a better solution.<figure id="56ae1d12-dec0-4ace-8e4c-ba4892bb0c5c" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-25_at_16.02.34.png"><img style="width:3104px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-25_at_16.02.34.png"/></a><figcaption>The volume slider in the settings.</figcaption></figure></li></ul><ul id="0d605090-b9ab-4ba2-b82e-90c44e354603" class="bulleted-list"><li><em><strong>Remember the volume </strong></em>
+The next point to consider is when the page is reloaded, the volume that was set before should be remembered and reused. I used LocalStorage to accomplish this. Each time the volume is adjusted, it is stored in the LocalStorage. So, when AudioContext is called again (e.g. because the page was reloaded, or if the website was visited again), the volume is initially searched in the LocalStorage and if found, it is used. If there is no such variable in the LocalStorage, a default value of 0.2 is used.
+With this, it was then also possible to remember the volume value before muting. In general e.g. with television, when you mute it and then unmute it again, the volume is the same as before the muting it. If you turn the volume down to 0 yourself, without the mute button, it stays at 0. I, therefore, wanted to include this functionality as well. When the mute button is clicked, the volume from before is stored in the LocalStorage and the current volume is set to 0. When the mute button is clicked again, the current volume is fetched from the LocalStorage and set to the value from before. The music is also paused. But this only happens if the mute/unmute button is pressed. If the volume is set to 0 by the slider, it stays at 0 (even if you click on the Mute/Unmute button afterwards).
+Why pause and set the volume to 0 when muting? Pausing is done to stop the music from running in the background so that when you unmute the music again, it will continue at the same point from where it was muted. The volume is therefore set to 0, so that if you then leave the page and come back, the volume is set back to 0, so it is muted again (persisted in LocalStorage).</li></ul><h2 id="c4f7faf9-afd2-49cb-9b9b-51011723facc" class="">Issue #202: <mark class="highlight-gray"><em>improve controls of obstacles and give more useful feedback to the user</em></mark></h2><p id="471df15e-d85b-4827-bb67-5876c404a12b" class="">
+</p><p id="3ed9c27f-b8dd-485e-81a2-588f83189a60" class=""><strong>Criteria for good UI: Accessibility, Beauty &amp; Delight and Responsive &amp; Forgiving </strong><a href="https://www.notion.so/Schneider-Kristina-2021-370d65a8bd2643d5b3c97db328fac8bb">(Schneider, Kristina. 2021)</a> </p><p id="14ba6556-e45a-4b5a-a513-8e8b1f1e0578" class="">This issue can be classified into the two criteria accessibility as well as beauty and delight. The accessibility criteria is based on the fact that it can be difficult to solve the obstacles since the input is sometimes not recognised correctly or not at all. The implementation of a skip button provides more accessibility and the user is no longer blocked from playing on. The responsive and forgiving aspect is covered by replacing the progress bar with the particles as well as the animations to provide more visual feedback to the user. Lastly, the beauty and delight criteria can also be assigned to this issue by adjusting the obstacles to the new screen design.</p><p id="cd8e7e5c-7552-454c-8670-aace2b692e99" class=""><em><strong>Usability Heuristics: Error Prevention, Visibility of system status </strong></em><a href="https://www.notion.so/Nielsen-Jakob-2021-dd6a2d7800ce4333b8674d1aa0100aa3">(Nielsen, Jakob. 2021)</a> </p><p id="7c6f15ab-897a-420c-9bc6-5cc99becc4c0" class="">In the future, the issue should prevent the user input from not being recognised or from being recognised incorrectly, thus keeping the user stuck at the obstacle.
+Additionally, it improves the visibility that the input was recognised.</p><h3 id="cffbca46-c03d-4e38-8d43-a84d9884fd43" class="">Before</h3><ul id="b747f14c-b3a3-4295-8295-3f834c587c2b" class="bulleted-list"><li>The progress on the tree trunk obstacle is measured by the distance the finger moves on the touchscreen. To detect the touch input, we used the Hammer.js library, which is useful mainly in that it detects the direction of each touch gesture. In our case, only vertical touch gestures are used and the maximum distance in either direction is counted as progress. The obstacle is considered solved when the specified distance has been covered. However, this leads to several problems. On the one hand, some smartphones do not recognise vertical movements, but only circular movements, for example. This makes it difficult for the user to solve the task. Furthermore, these type of gestures permanently trigger events, which often lead to functions being executed several times.</li></ul><pre id="8c46a8b1-df37-42d4-a4e6-43c835dea0ed" class="code"><code>const hammertime = touchContainer &amp;&amp; new Hammer(touchContainer);
+hammertime?.get(&#x27;pan&#x27;).set({ direction: Hammer.DIRECTION_HORIZONTAL });
+ 
+if (distance &lt;= MAX + Treshold) {
+   hammertime?.on(&#x27;panup pandown&#x27;, e =&gt; {
+       handleTouchEvent({ event: e.type, eventDistance: e.distance });
+   });
+}</code></pre><ul id="eab76d47-17a9-4a90-acb8-1add03f9c624" class="bulleted-list"><li>Due to the fact that the input on some devices does not work properly or sometimes not at all, the players are subsequently stuck at the obstacle. Thus, they are prevented from continuing to play and frustration often arises.</li></ul><ul id="3019103e-4b4f-4c5a-90ed-3e3f167e48b0" class="bulleted-list"><li>We could identify that the necessary effort to solve the spider obstacle is too high. This has to be overcome by blowing into the microphone or speaking. That input method, especially when repeated several times, can become very exhausting and negatively influence the gaming experience.</li></ul><ul id="080d37de-ba82-488c-894f-457eee334201" class="bulleted-list"><li>The feedback that the user gets about the current progress in solving the obstacles is displayed via a progress bar. At first, the bar is grey and fills up with green as the progress continues. In addition, the spider has small animations, for example, it swings from side to side and rolls its eyes.</li></ul><ul id="b3d94348-723c-4f3c-a369-65da80339077" class="bulleted-list"><li>Both obstacles still have the visual appearance of the prototype without a defined styling concept.</li></ul><div id="b71dc2b3-5955-4ab2-93df-c05ac124199a" class="column-list"><div id="e5557b62-f6c5-4591-8289-e728dae84bb3" style="width:50%" class="column"><figure id="964d9282-5abd-436f-b1f8-16768244bee2" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-21_at_21.00.00.png"><img style="width:192px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-21_at_21.00.00.png"/></a><figcaption>Progress is indicated by a progress bar.</figcaption></figure></div><div id="5a966552-3481-44be-a57c-cbd16c73b25d" style="width:50%" class="column"><figure id="1c8d066a-ab46-4936-b5b9-2214f2c5e75d" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-21_at_21.00.12.png"><img style="width:192px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-21_at_21.00.12.png"/></a><figcaption>The styling corresponds to that of the prototype.</figcaption></figure></div></div><h3 id="b7af7b08-18c6-4dc3-b179-5939a0f145b4" class="">After</h3><ul id="935ee92b-1fc1-43af-a98b-d8952653e994" class="bulleted-list"><li><em><strong>Changed the swipe detection for the tree trunk obstacle</strong></em><p id="fe1c58a6-09ed-40ac-802c-ec2120475fdb" class="">To solve the input problem, the distance measurement has been removed. Instead of this, the elapsed time is now measured, similar to a stopwatch. For this, the listeners of the touch gestures had to be changed as well. The timer is now started on every touch start event and stopped on a touch end event.</p><pre id="8b2a9ab7-f68e-4c94-af62-8443ef5124bf" class="code"><code>hammerTime.get(&#x27;pan&#x27;).set({ threshold: 0 });
+ 
+hammerTime.on(&#x27;panstart&#x27;, e =&gt; {
+	handleStartTimer();
+});
+ 
+hammerTime.on(&#x27;panend pancancel&#x27;, e =&gt; {
+	handleStopTimer();
+});</code></pre><p id="cf89dbdc-59f1-4310-bc5b-b0cbc6d8b064" class="">If the defined time limit is reached, the obstacle is considered solved. Through this new implementation, we solved the problems of the respective gesture recognition across the different smartphones. In addition, it also allows us to control how long it takes to solve the obstacle minimally since all types of obstacles should be given roughly the same time frame. And another benefit is that it makes the implementation more deterministic.</p><p id="c6d4005f-e300-4fd5-85bf-d9721a184666" class="">
+</p></li></ul><ul id="965f3309-80e3-45bb-bb22-648fa93fe6c0" class="bulleted-list"><li><em><strong>Implementation of a skip button</strong></em><p id="dfb7d5eb-fa29-44ff-a853-5586b45b0cbf" class="">However, if the recognition of the touch input still does not work, a skip button appears after a timeout, which allows the player to stay in the game anyway.</p><pre id="3615bed2-ed88-4c3a-8b53-6ca4ec86ecfe" class="code"><code>setTimeout(() =&gt; {
+	if (sec === 0) {
+		setSkip(true);
+	}
+}, 10000);</code></pre><p id="a5ee1378-0007-4682-a6f3-72872cf4acf5" class="">The delay is chosen in such a way, that it would not be profitable to wait until the button appears and skip the obstacle. With this solution, we try to minimise the frustration that occurs and allow the player to continue playing.</p></li></ul><div id="5bfabfd8-9150-4110-b810-93782ab20254" class="column-list"><div id="88daea18-6fb9-4c12-8b7d-250c2e460cae" style="width:43.75%" class="column"><figure id="c1be44e1-5d5c-4f21-8fbc-b17cdac806b7" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-27_at_13.33.50.png"><img style="width:192px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-27_at_13.33.50.png"/></a><figcaption>If still no input was detected after a timeout, a skip button is displayed.</figcaption></figure></div><div id="eb3e68bb-8441-4c47-abda-52f86a0a2e40" style="width:56.25%" class="column"><figure id="1578648a-8b51-4770-ade1-bbfa98d6f791" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-27_at_13.21.03.png"><img style="width:192px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-27_at_13.21.03.png"/></a><figcaption>The same applies to the tree trunk.</figcaption></figure></div></div><ul id="273a2c35-4859-4924-813c-2f1996e407c9" class="bulleted-list"><li><em><strong>Adjustment of the maximum progress of the spider obstacle</strong></em><p id="f7236b53-7ee6-452d-9fc6-8ef426414c60" class="">The progress is calculated from the volume of the microphone input. Each time it exceeds a certain threshold, the progress is increased by 1. The threshold of the necessary progress has been reduced from 20 to 10. </p><p id="7bef6eba-8050-44fe-b70f-87b296748cf5" class="">
+</p></li></ul><ul id="dd23cc3b-d646-40e5-8437-f779abcafe1e" class="bulleted-list"><li><em><strong>Feedback for the user when solving the obstacle</strong></em><p id="218f9f42-7283-4f63-a97b-e5f7d7302599" class="">We experienced that feedback via a progress bar is considered bad in the game area and that it is better to use animation that is in context with the events.
+Instead of the progress bar, particles have now been implemented for the tree trunk obstacle, which appear whenever the player&#x27;s finger is on the touchscreen. If the interaction is ended, the particles also disappear. The package<a href="https://www.npmjs.com/package/react-particles-js"> react-particle-js</a> was used for the implementation. Currently, the particles consist of circles, but later they will be replaced by images of wood splinters. Because the particles always appear as soon as the user interacts with the touchscreen, he gets immediate feedback on whether the input works.</p><p id="30e9d9c2-f6ae-43ac-afc6-96fb7564e66e" class="">Improvements have also been made to the spider. Previously, the animation was executed only once. This has now been changed so that it runs in an infinite loop. In addition, the thread on which the spider hangs has been used to indicate the current progress. In the beginning, the thread has a certain width, which becomes less and less with growing progress. In the end, the thread disappears and the spider falls.</p></li></ul><div id="89064082-450c-41d9-b648-be2de1b20f91" class="column-list"><div id="651446cc-f8dd-40dc-ada7-58ad9c298ef1" style="width:50%" class="column"><figure id="ea7980b6-900c-4527-b1f6-afb4adb63f61"><div class="source"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screen_Recording_2021-05-27_at_14.10.05.mov">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f32f9c4-8dc4-4685-b246-7c33d3e35a2e/Screen_Recording_2021-05-27_at_14.10.05.mov</a></div><figcaption>As soon as the finger touches the touch screen, particles are displayed</figcaption></figure></div><div id="69650f4b-a804-432e-9966-a3d9e862774c" style="width:50%" class="column"><figure id="0d112834-bd96-4dfb-bc39-3ad5577436c4"><div class="source"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screen_Recording_2021-06-02_at_20.33.14.mov">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7e355d25-c433-494c-9faa-aab041be3f13/Screen_Recording_2021-06-02_at_20.33.14.mov</a></div><figcaption>The thread on which the spider hangs becomes thinner and thinner with growing progress.</figcaption></figure></div></div><ul id="3cbd7d73-e0e9-408a-ab94-1fb54b1b291a" class="bulleted-list"><li><em><strong>Adaptation of the obstacles to the new screen design</strong></em><p id="23b000f0-a3da-4046-b13c-1c63c8c39b7f" class="">The styling of the obstacles was visually adapted to the current styling. Here, the background was adjusted, the textual instructions and also the progress bar was removed. </p><p id="0f35878e-ffb1-4524-b21b-379baf3fd014" class="">At first, the plan was to use landscape mode for the layout of the controller. However, due to the implementation of the new styling of the obstacles, it was decided to stay in portrait mode.
+The reason for this, is that the phone will have to be turned at the latest when a spider obstacle is reached, since the microphone is usually at the bottom of the phone.</p></li></ul><div id="f28bbdc6-3c9b-4dab-9925-8b23eedd2183" class="column-list"><div id="b4f19a41-5768-44dd-ba19-2b07e9a8edf9" style="width:31.25%" class="column"><figure id="7c387c9c-e465-4e3c-b188-108d3998de48" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-27_at_13.33.36.png"><img style="width:192px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-27_at_13.33.36.png"/></a><figcaption>The background was changed and the progress bar removed</figcaption></figure></div><div id="4fbdc858-34df-4157-9a78-e8f63406bab1" style="width:68.75%" class="column"><figure id="d09f26a5-52a6-4f15-bf54-931e0fe51733" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-27_at_13.20.56.png"><img style="width:192px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Screenshot_2021-05-27_at_13.20.56.png"/></a><figcaption>The instructions were also removed.</figcaption></figure></div></div><h2 id="e93e6980-21f1-42be-b59f-a11429ed11f5" class="">Issue #205: <mark class="highlight-gray"><em>change background and player movement</em></mark></h2><p id="62b7d485-0714-41e2-8255-4a8e89ecbf5a" class=""><strong>Criteria for good UI: Beauty and Delight </strong><a href="https://www.notion.so/Schneider-Kristina-2021-370d65a8bd2643d5b3c97db328fac8bb">(Schneider, Kristina. 2021)</a> </p><p id="75b072e3-dc6b-482b-bab8-b55e4e54529a" class="">The issue can be classified as beauty and delight because the overall appearance of the user interface has been improved by adding more movement to the game scene, as well as a new motivation for the user to reach the goal by implementing a swarm of mosquitos that chases the monsters.</p><p id="0ae098f3-3edd-4c72-a2ee-5ee229ef98af" class=""><em><strong>Usability Heuristics: Aesthetic and minimalist design </strong></em><a href="https://www.notion.so/Nielsen-Jakob-2021-dd6a2d7800ce4333b8674d1aa0100aa3">(Nielsen, Jakob. 2021)</a> </p><p id="53c30e88-b555-4210-98fa-07200162026c" class="">Since this issue aims to improve the appearance of our game, it falls under the category of aesthetic and minimalist design. The four design principles are employed in our new layout in the following ways:</p><ul id="585ac06e-ad88-4a94-bd03-59d4025c28f4" class="bulleted-list"><li>Contrast: The brightly coloured monsters contrast with the dark, cool colours in the background </li></ul><ul id="4e7f2abd-9ccc-45e8-b755-c6d1eaef5c5a" class="bulleted-list"><li>Repetition: The colour scheme used in this scene matches the lobby and the start screen.</li></ul><ul id="a9d2754f-0b7e-4e90-a01f-44231b994bb1" class="bulleted-list"><li>Alignment: The player characters are evenly spaced out and their start and endpoint are at the same height. </li></ul><ul id="92f3ccfc-1815-4594-8671-15446434c576" class="bulleted-list"><li>Proximity: The four lanes can easily be recognised by having the background image appear multiple times.</li></ul><h3 id="c707a63c-0d9d-4fb0-8b97-80fcae5b6541" class="">Before</h3><ul id="5edb6aa2-38c5-4899-a99d-46cb9c4c2707" class="bulleted-list"><li>Before the workshop, the background of the game consisted of a picture of the forest and four lanes for the player characters. The monsters moved from the start on the left side of the screen to the goal on the right side. Only the monsters moved while the background stayed the same.</li></ul><ul id="7f2458a1-779d-4b04-8570-1142c705a02e" class="bulleted-list"><li>During the last play tests, multiple players gave the feedback that the game seemed rather static. In order to make the game more engaging and exciting to watch, there needs to be more movement in the scene. Allowing the players to see all the obstacles and the goal in the beginning is another aspect that should be changed to achieve this objective.</li></ul><ul id="2cd103b3-4ceb-4c5f-8837-ebc5a3da0e2a" class="bulleted-list"><li>In addition to that, with this background composition we were not using the whole screen space.<figure id="8b294c94-42b1-4d6f-88c0-499bc1566e9f" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/24bcad00-ebf7-4544-aeae-087d77dcb167.jpg"><img style="width:672px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/24bcad00-ebf7-4544-aeae-087d77dcb167.jpg"/></a><figcaption>This image shows the previous state of the game layout.</figcaption></figure></li></ul><h3 id="45cd8373-9290-4c78-8a00-9c601f841204" class="">After</h3><ul id="0d937708-8291-4185-be81-68627c839115" class="bulleted-list"><li><em><strong>Background Image</strong></em><p id="8fb96e3e-aeec-40b1-ba30-e2495490940b" class="">The background image has been changed so it is displayed four times to represent the four lanes. This way, the player characters can be spaced out evenly within the whole screen height. The image can also be seen more clearly now since it is no longer covered by the tracks. In addition to that, the perspective of the game looks better now compared to our initial state.</p></li></ul><p id="b1bc56f0-4586-4236-988c-2328789e9323" class="">
+</p><ul id="fe36b511-e5d6-4ca7-9d81-587de251b860" class="bulleted-list"><li><em><strong>Scrolling</strong></em><p id="b0f8d0c1-c6f4-4304-9d03-65082d5724a4" class="">The background has been updated to move along with the players. Since there can only be one camera per Phaser instance, it is not possible to have a separate camera following each player. Therefore, it moves at a constant speed for all players. The scrolling adjusts to the width of the player’s screen and it stops moving once the goal can be seen. The example below shows how the scrolling has been implemented. The camera&#x27;s position on the X axis is continuously increased by a constant number, the cameraSpeed. Using the setBounds function, the start point is set to the upper left corner of the canvas (coordinates 0, 0) and its width and height are set to match the browser window&#x27;s dimensions.</p></li></ul><pre id="bf380479-777c-4dab-84f2-c66841853d06" class="code"><code>this.camera.scrollX += this.cameraSpeed
+this.camera.setBounds(0, 0, windowWidth, windowHeight);</code></pre><p id="af5b00f2-4438-415b-a14f-4ebc7abe0ea9" class="">Another aspect that makes the game more challenging, is that not all the obstacles are visible from the beginning of the game, which makes it less predictable.</p><figure id="183956f0-0e5a-42f8-bf1a-14905e70aa31" class="image"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Untitled.png"><img style="width:672px" src="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/Untitled.png"/></a><figcaption>The new game design with the separate lanes is depicted here.</figcaption></figure><figure id="2d4cbd10-a248-4a0e-85e7-96b0dc23e62a"><div class="source"><a href="Monstrous%20Mini%20Games%20-%20CSS%20&amp;%20UI%20Workshop%2042d5e8068a3042d0bc2ae67b5de8f3ee/VIDEO.mov">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b56d2303-0c8b-46fe-830a-80aad9832772/VIDEO.mov</a></div><figcaption>Video of the new game design in action.</figcaption></figure><p id="4f02bdc3-bbeb-45b9-aaa7-ccc04cd2f65a" class="">
+</p><ul id="0833d7d3-d26e-4733-b3ef-4a02d127caf4" class="bulleted-list"><li><em><strong>Chasers</strong></em><p id="ce514354-d39a-4c0d-aa9d-4f0ae89575a6" class="">Since the background is no longer static, the monsters can fall off the screen. In that case, they are removed from the game. In order to make it clear for the players that they should not fall back too far, we added a swarm of mosquitos that chases them. If the player reaches the left corner of the screen, he is caught by the insects. To achieve this, the mosquitos’ position is received from the backend along with the game state updates and the sprite is moved to the according position. This feature will be finished in the future, since there was not enough time to do so during the workshop.</p></li></ul><h2 id="4040a7d6-909f-4bbd-8d54-02406bd27c6c" class="">Summary</h2><p id="82fac793-c5d3-4ff6-b3a2-e5db137136e3" class="">In summary, our initial prioritisation of issues and associated effort estimate was quite realistic. Except for a few minor details, we were able to work through all of the issues during the workshop. Our estimations proved to be reasonably accurate.
+In retrospect, it might have been better to divide our selected issues into several smaller ones, as they were quite large.</p><h1 id="4b881f8b-a747-44a5-ad1b-f5fa68e9e7fa" class="">References</h1><div id="e60f0761-7bac-48ee-a11c-e9c57d22de1a" class="collection-content"><h4 class="collection-title">References</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Exponent</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Content</th></tr></thead><tbody><tr id="4618baf9-2636-4a8c-9588-cde949a7c4ee"><td class="cell-title"><a href="https://www.notion.so/Juh-sz-Andr-s-2020-4618baf926364a8c9588cde949a7c4ee">(Juhász, András. 2020)</a></td><td class="cell-{YFS">Juhász, András. (2020). &quot;6 methods to prioritize features&quot;. UX Collective. Accessed June 6, 2021. <a href="https://uxdesign.cc/6-methods-to-prioritize-features-39a69f7d7b05">https://uxdesign.cc/6-methods-to-prioritize-features-39a69f7d7b05</a></td></tr><tr id="dd6a2d78-00ce-4333-b867-4d1aa0100aa3"><td class="cell-title"><a href="https://www.notion.so/Nielsen-Jakob-2021-dd6a2d7800ce4333b8674d1aa0100aa3">(Nielsen, Jakob. 2021)</a></td><td class="cell-{YFS">Nielsen, Jakob. (2021). &quot;10 Usability Heuristics for User Interface Design&quot;. Accessed June 6, 2021. <a href="https://pdfs.semanticscholar.org/5f03/b251093aee730ab9772db2e1a8a7eb8522cb.pdf">https://pdfs.semanticscholar.org/5f03/b251093aee730ab9772db2e1a8a7eb8522cb.pdf</a></td></tr><tr id="370d65a8-bd26-43d5-b3c9-7db328fac8bb"><td class="cell-title"><a href="https://www.notion.so/Schneider-Kristina-2021-370d65a8bd2643d5b3c97db328fac8bb">(Schneider, Kristina. 2021)</a></td><td class="cell-{YFS">Schneider, Krisitina. (2021). &quot;Criteria for good UI&quot;. Accessed June 6, 2021. <a href="https://wiki.mediacube.at/wiki/images/0/0e/Clientside-SS2021_CSS-UI-Coaching-01-shared.pdf">https://wiki.mediacube.at/wiki/images/0/0e/Clientside-SS2021_CSS-UI-Coaching-01-shared.pdf</a></td></tr></tbody></table></div><p id="6587f8a7-4377-49f2-bb3f-39afc0d67ef5" class="">
+</p></div></article></body></html>
